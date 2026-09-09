@@ -1,0 +1,21 @@
+# Render Blueprint: creates the web service when you "New > Blueprint" this repo.
+# Free instance: no persistent disk, so the app is read-only and data arrives via Git
+# (see .github/workflows/collect.yml).
+services:
+  - type: web
+    name: insightmetric
+    runtime: python
+    plan: free
+    region: frankfurt            # closest free region to the UK; change if you prefer
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run Daily_Trends.py --server.port $PORT --server.address 0.0.0.0 --server.headless true
+    healthCheckPath: /_stcore/health
+    autoDeployTrigger: commit    # redeploy whenever the collector workflow commits new data
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      - key: DEPLOYED
+        value: "1"               # hides per-user persistence and the server-level theme switch
+      - key: STREAMLIT_BROWSER_GATHER_USAGE_STATS
+        value: "false"

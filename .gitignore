@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+settings.json
+data/raw/
+.streamlit/secrets.toml
+_to_delete_probe

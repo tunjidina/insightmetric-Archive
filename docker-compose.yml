@@ -1,0 +1,63 @@
+# Local orchestration: the app plus an on-demand collector sharing the same data folder.
+#
+#   docker compose up -d                     # app on http://localhost:8501
+#   docker compose run --rm collector        # collect today (writes to ./data on the host)
+#   docker compose run --rm collector --dry-run
+#   docker compose run --rm trainer          # retrain
+#   docker compose --profile daily up -d     # also start the built-in daily scheduler
+#
+# ./data and ./models are bind-mounted so the app sees new rows without a rebuild and
+# nothing is lost when containers are recreated.
+services:
+  app:
+    build: .
+    image: insightmetrics
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+    restart: unless-stopped
+
+  collector:
+    image: insightmetrics
+    build: .
+    entrypoint: ["./docker-entrypoint.sh", "collect"]
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+    profiles: ["tools"]        # run on demand: docker compose run --rm collector
+
+  trainer:
+    image: insightmetrics
+    build: .
+    entrypoint: ["./docker-entrypoint.sh", "train"]
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./outputs:/app/outputs
+    profiles: ["tools"]
+
+  # Optional in-container scheduler: collects once a day at 06:15 UTC, retrains on Mondays.
+  # Use this instead of Task Scheduler / cron when the stack runs on an always-on box.
+  scheduler:
+    image: insightmetrics
+    build: .
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        while true; do
+          now=$$(date -u +%H:%M)
+          if [ "$$now" = "06:15" ]; then
+            python src/collect_live.py || true
+            [ "$$(date -u +%u)" = "1" ] && python src/train.py || true
+            sleep 60
+          fi
+          sleep 30
+        done
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./outputs:/app/outputs
+    restart: unless-stopped
+    profiles: ["daily"]

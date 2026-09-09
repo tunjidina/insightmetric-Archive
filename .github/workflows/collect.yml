@@ -1,0 +1,35 @@
+# Daily collection on GitHub's schedule. Fetches the approved feeds, appends one day of
+# rows, retrains weekly, and commits the data so Render redeploys with fresh numbers.
+name: collect-daily
+
+on:
+  schedule:
+    - cron: "15 6 * * *"        # 06:15 UTC every day
+  workflow_dispatch:            # manual "Run workflow" button for testing
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Collect today's trends, releases and HN engagement
+        run: python src/collect_live.py
+      - name: Retrain weekly (Mondays) once there are enough labelled rows
+        run: |
+          ROWS=$(python -c "import pandas as pd; print(pd.read_parquet('data/tech_trends.parquet')['recurred_next_day'].notna().sum())")
+          if [ "$(date +%u)" = "1" ] && [ "$ROWS" -ge 150 ]; then python src/train.py; else echo "skip retrain (rows=$ROWS)"; fi
+      - name: Commit data
+        run: |
+          git config user.name "insightmetrics-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/*.parquet data/*.csv models/ outputs/train_summary.txt outputs/feature_importance.csv || true
+          git diff --cached --quiet || git commit -m "data: collect $(date -u +%F)"
+          git push

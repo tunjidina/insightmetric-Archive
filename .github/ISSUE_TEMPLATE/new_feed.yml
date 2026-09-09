@@ -1,0 +1,69 @@
+name: New feed proposal
+description: Propose a source to add to FEEDS in src/collect_live.py.
+labels: ["feed", "enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A feed is not free: it costs a request every day, widens the vocabulary the lexicon
+        must cover, and shifts the category mix of the whole dataset. Please read
+        [Proposing a new feed](../blob/main/CONTRIBUTING.md#proposing-a-new-feed) first.
+
+  - type: input
+    id: url
+    attributes:
+      label: Feed URL
+      description: Must be public RSS or Atom, with no authentication of any kind.
+      placeholder: https://example.com/feed.xml
+    validations:
+      required: true
+
+  - type: textarea
+    id: distinct
+    attributes:
+      label: What does it add that the current five do not?
+      description: >
+        "More AI news" is not a reason. "The current five have almost no semiconductor or
+        hardware coverage" is.
+    validations:
+      required: true
+
+  - type: input
+    id: volume
+    attributes:
+      label: Roughly how many items per day?
+      description: Around 10–30 works well. A firehose drowns the other sources; a weekly feed adds nothing.
+      placeholder: "~20"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: requirements
+    attributes:
+      label: Requirements
+      options:
+        - label: The feed is public and needs no API key, token or account
+          required: true
+        - label: I have run `python src/collect_live.py --dry-run` with the feed added
+          required: false
+        - label: I checked that its headlines cluster sensibly and do not create false merges
+          required: false
+
+  - type: textarea
+    id: dry-run
+    attributes:
+      label: Dry-run output, before and after
+      description: The top ten with and without the feed, so the effect on ranking is visible.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: lexicon
+    attributes:
+      label: Lexicon changes needed
+      description: >
+        Which terms did you have to add to CATEGORY_TERMS, and which headlines motivated
+        them? Terms must come from headlines you actually saw, not from imagination.
+    validations:
+      required: false

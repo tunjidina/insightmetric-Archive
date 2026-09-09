@@ -1,0 +1,27 @@
+Train: 340 rows  |  Test: 100 rows (from 2026-08-29)
+Baseline (always predict majority class): 0.560 accuracy
+
+Test accuracy: 0.66   F1: 0.667   ROC-AUC: 0.709
+Confusion matrix [[TN, FP], [FN, TP]]: [[32, 12], [22, 34]]
+
+Feature importance (standardised coefficients):
+           feature  coefficient
+              rank    -0.567232
+      source_count     0.298950
+     keyword_count     0.170962
+description_length     0.127417
+   sentiment_score     0.123567
+         cat_Chips    -0.122952
+      cat_Startups     0.108238
+        cat_Policy     0.078176
+     sentiment_abs     0.077469
+          cat_Apps    -0.066847
+ cat_Cybersecurity    -0.066225
+       cat_Gadgets     0.061317
+ keyword_frequency    -0.050304
+  days_seen_before    -0.027616
+         cat_Cloud    -0.009190
+            cat_AI     0.004399
+         cat_Other     0.000000
+
+Saved model -> /home/claude/tech_trends/models/recurrence_model.joblib

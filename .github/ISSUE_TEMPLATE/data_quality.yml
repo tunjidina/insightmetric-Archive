@@ -1,0 +1,51 @@
+name: Data quality report
+description: Clustering merged unrelated stories, a topic was miscategorised, or a label looks wrong.
+labels: ["data-quality"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        These reports are genuinely valuable — most of the clustering and lexicon rules in
+        this project exist because a real day of data exposed a specific failure.
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What went wrong?
+      options:
+        - Two unrelated stories merged into one topic
+        - One story was split into several topics
+        - A topic was put in the wrong category
+        - A recurrence label looks wrong
+        - A release or HN story was handled incorrectly
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: The headlines or rows involved
+      description: Paste the actual titles and, if you have them, the keywords and category assigned.
+      render: shell
+      placeholder: |
+        "LibreOffice breaks download records after declaring it has no AI features"
+        "Microsoft breaks another patch Tuesday record"
+        → merged into one topic, keywords: break|record
+    validations:
+      required: true
+
+  - type: input
+    id: date
+    attributes:
+      label: Collection date
+      description: So the cached feed under `data/raw/<date>/` can be replayed.
+      placeholder: "2026-09-08"
+    validations:
+      required: false
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should have happened?
+    validations:
+      required: true

@@ -1,0 +1,14 @@
+.git
+.github
+__pycache__
+**/__pycache__
+*.pyc
+data/raw/
+settings.json
+outputs/*.png
+docs/
+*.md
+!README.md
+.streamlit/secrets.toml
+render.yaml
+docker-compose.yml

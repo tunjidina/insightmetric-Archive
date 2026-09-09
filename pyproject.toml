@@ -1,0 +1,27 @@
+# Tooling configuration for InsightMetric. There is no packaging here on purpose —
+# the project is run from its checkout, not installed.
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"   # 3.10 is the floor: nothing here needs 3.11-only syntax
+exclude = ["data", "models", "outputs", ".venv"]
+
+[tool.ruff.lint]
+# A deliberately modest rule set: correctness and import hygiene, not style opinions.
+#   E/W  pycodestyle   F  pyflakes   I  import order   UP  modern syntax   B  common bugs
+select = ["E", "W", "F", "I", "UP", "B"]
+ignore = [
+    "E501",    # long lines are allowed where a data literal reads better packed than split
+    "E402",    # sys.path is extended before local imports so the scripts run from any cwd
+    "E701",    # short single-line ifs are used deliberately for terse setup
+    "E702",    # paired statements on one line (ax.set_xlim(...); ax.set_ylim(...)) are intentional
+    "UP017",   # datetime.UTC is 3.11+; timezone.utc keeps the project running on 3.10
+    "B905",    # zip(..., strict=) — the zips here are equal-length by construction; see CONTRIBUTING
+]
+
+[tool.ruff.lint.per-file-ignores]
+# The category lexicon packs related terms onto shared lines; one term per line would be worse.
+"src/collect_live.py" = ["E501"]
+
+# Formatting is NOT enforced: `ruff format` would rewrite all fifteen files and destroy the
+# deliberate compact style. Lint is the gate; formatting is the author's judgement.

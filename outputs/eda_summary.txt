@@ -1,0 +1,64 @@
+450 rows, 45 days, 41 distinct topics
+
+Sentiment by category (mean):
+category
+Apps             0.033
+Cybersecurity    0.041
+Chips            0.146
+Gadgets          0.153
+Policy           0.174
+AI               0.174
+Startups         0.212
+Cloud            0.254
+
+Top keywords:
+funding        327
+region         298
+fintech        269
+inference      262
+compliance     253
+privacy        222
+wearable       213
+gpu            205
+data-centre    204
+regulation     204
+
+Category counts:
+category
+AI               80
+Policy           70
+Cybersecurity    60
+Cloud            53
+Gadgets          52
+Apps             48
+Startups         44
+Chips            43
+
+Overall recurrence rate: 53.2%
+
+Recurrence rate by source_count:
+source_count
+1    0.318
+2    0.361
+3    0.470
+4    0.713
+5    0.867
+
+Recurrence rate by category:
+category
+Cybersecurity    0.586
+Startups         0.581
+AI               0.564
+Policy           0.559
+Gadgets          0.558
+Cloud            0.520
+Apps             0.438
+Chips            0.395
+
+Recurrence rate by sentiment bucket:
+sentiment_score
+negative    0.504
+neutral     0.490
+positive    0.583
+
+Figures written to /home/claude/tech_trends/outputs

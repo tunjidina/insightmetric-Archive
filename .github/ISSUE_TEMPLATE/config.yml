@@ -1,0 +1,6 @@
+# Blank issues stay enabled: questions, documentation gaps and half-formed ideas are all
+# welcome, and forcing them into a template would lose more than it gains.
+#
+# If you enable GitHub Discussions on this repository, add a contact_links entry here
+# pointing at it so questions land there rather than in the issue tracker.
+blank_issues_enabled: true

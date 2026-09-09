@@ -1,0 +1,14 @@
+# Normalise line endings. Written on Linux, cloned on Windows: without this, Git would
+# hand the shell scripts CRLF endings on checkout and they would fail inside the Docker
+# image and in GitHub Actions with "bad interpreter: /usr/bin/env bash^M".
+* text=auto eol=lf
+
+*.sh            text eol=lf
+Dockerfile      text eol=lf
+docker-entrypoint.sh text eol=lf
+
+*.png  binary
+*.jpg  binary
+*.ico  binary
+*.parquet binary
+*.joblib  binary

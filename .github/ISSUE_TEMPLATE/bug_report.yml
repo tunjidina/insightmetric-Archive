@@ -1,0 +1,69 @@
+name: Bug report
+description: Something behaves incorrectly — a crash, a wrong number, a page that will not render.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. The most useful bug reports let someone else reproduce the
+        problem offline — if the bug involves collected data, the cached feed under
+        `data/raw/<date>/` is usually enough to do that.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What did you expect, and what did you get instead?
+      placeholder: |
+        I expected the Releases page to show the release log.
+        It showed "no log yet" even though data/releases.parquet exists.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Command you ran
+      description: The exact command, including flags.
+      render: shell
+      placeholder: python src/collect_live.py --dry-run --offline
+    validations:
+      required: true
+
+  - type: textarea
+    id: traceback
+    attributes:
+      label: Full traceback or output
+      description: Paste it all — the last line alone rarely identifies the cause.
+      render: shell
+    validations:
+      required: false
+
+  - type: dropdown
+    id: dataset
+    attributes:
+      label: Which dataset were you running on?
+      options:
+        - Synthetic (from src/collect.py)
+        - Live collected data
+        - Both / not sure
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Python version and OS
+      placeholder: "Python 3.11.9, Windows 11"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I can reproduce this on a fresh clone, or I have said why I cannot
+          required: false
+        - label: I have attached or can share the relevant file from `data/raw/<date>/`
+          required: false
