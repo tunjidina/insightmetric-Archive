@@ -1,4 +1,19 @@
 repo,tag,title,published_at,kind,is_prerelease,notes_length,url,release_date
+ggml-org/llama.cpp,b10875,b10875,2026-09-09 11:17:45+00:00,other,True,1178,https://github.com/ggml-org/llama.cpp/releases/tag/b10875,2026-09-09
+ggml-org/llama.cpp,b10874,b10874,2026-09-09 09:56:51+00:00,other,True,1182,https://github.com/ggml-org/llama.cpp/releases/tag/b10874,2026-09-09
+vllm-project/vllm,v0.29.0,v0.29.0,2026-09-09 09:40:07+00:00,minor,False,32304,https://github.com/vllm-project/vllm/releases/tag/v0.29.0,2026-09-09
+ggml-org/llama.cpp,b10873,b10873,2026-09-09 09:24:05+00:00,other,True,1121,https://github.com/ggml-org/llama.cpp/releases/tag/b10873,2026-09-09
+ggml-org/llama.cpp,b10872,b10872,2026-09-09 07:47:26+00:00,other,True,1394,https://github.com/ggml-org/llama.cpp/releases/tag/b10872,2026-09-09
+ggml-org/llama.cpp,b10871,b10871,2026-09-09 07:20:12+00:00,other,True,1662,https://github.com/ggml-org/llama.cpp/releases/tag/b10871,2026-09-09
+ggml-org/llama.cpp,b10870,b10870,2026-09-09 06:40:30+00:00,other,True,1673,https://github.com/ggml-org/llama.cpp/releases/tag/b10870,2026-09-09
+ggml-org/llama.cpp,b10869,b10869,2026-09-09 05:27:37+00:00,other,True,1261,https://github.com/ggml-org/llama.cpp/releases/tag/b10869,2026-09-09
+streamlit/streamlit,1.63.1.dev20260908,1.63.1.dev20260908,2026-09-09 04:37:12+00:00,patch,True,36,https://github.com/streamlit/streamlit/releases/tag/1.63.1.dev20260908,2026-09-09
+ggml-org/llama.cpp,b10868,b10868,2026-09-09 02:03:08+00:00,other,True,1161,https://github.com/ggml-org/llama.cpp/releases/tag/b10868,2026-09-09
+ollama/ollama,v0.34.0-rc3,v0.34.0,2026-09-09 00:45:53+00:00,minor,True,473,https://github.com/ollama/ollama/releases/tag/v0.34.0-rc3,2026-09-09
+ollama/ollama,v0.34.0-rc2,v0.34.0-rc2,2026-09-08 23:27:20+00:00,minor,True,61,https://github.com/ollama/ollama/releases/tag/v0.34.0-rc2,2026-09-08
+microsoft/vscode,1.136.2,1.136.2,2026-09-08 17:54:34+00:00,patch,False,44,https://github.com/microsoft/vscode/releases/tag/1.136.2,2026-09-08
+ggml-org/llama.cpp,b10867,b10867,2026-09-08 17:33:23+00:00,other,True,1263,https://github.com/ggml-org/llama.cpp/releases/tag/b10867,2026-09-08
+ggml-org/llama.cpp,b10865,b10865,2026-09-08 15:14:21+00:00,other,True,1191,https://github.com/ggml-org/llama.cpp/releases/tag/b10865,2026-09-08
 ggml-org/llama.cpp,b10864,b10864,2026-09-08 14:33:11+00:00,other,True,1665,https://github.com/ggml-org/llama.cpp/releases/tag/b10864,2026-09-08
 langchain-ai/langchain,langchain-openai==1.6.1,langchain-openai==1.6.1,2026-09-08 14:20:42+00:00,patch,False,705,https://github.com/langchain-ai/langchain/releases/tag/langchain-openai%3D%3D1.6.1,2026-09-08
 ggml-org/llama.cpp,b10863,b10863,2026-09-08 14:01:19+00:00,other,True,1764,https://github.com/ggml-org/llama.cpp/releases/tag/b10863,2026-09-08
@@ -15,8 +30,8 @@ ggml-org/llama.cpp,b10852,b10852,2026-09-08 00:42:25+00:00,other,True,1191,https
 ggml-org/llama.cpp,b10850,b10850,2026-09-07 20:05:53+00:00,other,True,1611,https://github.com/ggml-org/llama.cpp/releases/tag/b10850,2026-09-07
 streamlit/streamlit,1.63.1.dev20260906,1.63.1.dev20260906,2026-09-07 04:39:25+00:00,patch,True,36,https://github.com/streamlit/streamlit/releases/tag/1.63.1.dev20260906,2026-09-07
 streamlit/streamlit,1.63.1.dev20260905,1.63.1.dev20260905,2026-09-06 04:36:13+00:00,patch,True,36,https://github.com/streamlit/streamlit/releases/tag/1.63.1.dev20260905,2026-09-06
-ollama/ollama,v0.34.0-rc1,v0.34.0,2026-09-05 23:59:41+00:00,minor,True,473,https://github.com/ollama/ollama/releases/tag/v0.34.0-rc1,2026-09-05
 streamlit/streamlit,1.63.1.dev20260904,1.63.1.dev20260904,2026-09-05 04:35:49+00:00,patch,True,36,https://github.com/streamlit/streamlit/releases/tag/1.63.1.dev20260904,2026-09-05
+ollama/ollama,v0.34.0-rc1,v0.34.0-rc1,2026-09-05 00:48:55+00:00,minor,True,51,https://github.com/ollama/ollama/releases/tag/v0.34.0-rc1,2026-09-05
 vllm-project/vllm,v0.29.0rc4,v0.29.0rc4: [Bugfix] Avoid sync in TRT-LLM ragged prefill,2026-09-04 22:58:29+00:00,minor,True,79,https://github.com/vllm-project/vllm/releases/tag/v0.29.0rc4,2026-09-04
 langchain-ai/langchain,langchain-core==1.6.2,langchain-core==1.6.2,2026-09-04 21:29:44+00:00,patch,False,405,https://github.com/langchain-ai/langchain/releases/tag/langchain-core%3D%3D1.6.2,2026-09-04
 ollama/ollama,v0.34.0-rc0,v0.34.0-rc0,2026-09-04 21:04:48+00:00,minor,True,45,https://github.com/ollama/ollama/releases/tag/v0.34.0-rc0,2026-09-04
