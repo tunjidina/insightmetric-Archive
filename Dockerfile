@@ -37,11 +37,14 @@ RUN useradd --create-home --uid 10001 app \
  && chown -R app:app /app
 USER app
 
+# Render expects your app to listen on this port
 EXPOSE 8501
 ENV PORT=8501
 
+# Healthcheck for Streamlit
 HEALTHCHECK --interval=30s --timeout=5s --start-period=40s --retries=3 \
   CMD curl -fsS "http://localhost:${PORT}/_stcore/health" || exit 1
 
-ENTRYPOINT ["./docker-entrypoint.sh"]
-CMD ["app"]
+# ⭐ DIRECT STREAMLIT START — FIXES EXIT CODE 128
+CMD ["streamlit", "run", "Daily_Trends.py", "--server.port=8501", "--server.address=0.0.0.0"]
+
