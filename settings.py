@@ -1,0 +1,3 @@
+APP_NAME = "InsightMetric"
+DEFAULT_DAYS = 7
+UI_VERSION = "2026.09"
