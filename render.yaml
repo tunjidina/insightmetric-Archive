@@ -1,7 +1,3 @@
-# Render Blueprint: creates the web service when you "New > Blueprint" this repo.
-# Free instance: no persistent disk, so the app is read-only and data arrives via Git
-# (see .github/workflows/collect.yml).
-
 services:
   - type: web
     name: insightmetric
